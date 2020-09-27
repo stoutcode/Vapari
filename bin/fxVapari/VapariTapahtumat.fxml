@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxVapari.VapariTapahtumatController">
+   <bottom>
+      <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="tapahtumatLisaa" mnemonicParsing="false" onAction="#handleTapahtumatLisaa" prefWidth="75.0" text="Lisää" />
+            <Button fx:id="tapahtumatMuokkaa" mnemonicParsing="false" onAction="#handleTapahtumatMuokkaa" prefWidth="75.0" text="Muokkaa" />
+            <Button fx:id="tapahtumatPoista" mnemonicParsing="false" onAction="#handleTapahtumatPoista" prefWidth="75.0" text="Poista" />
+            <Button fx:id="tapahtumatSulje" mnemonicParsing="false" onAction="#handleTapahtumatSulje" prefWidth="75.0" text="Sulje" />
+         </children></HBox>
+   </bottom>
+   <top>
+      <Label text="Tapahtumat" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="14.0" />
+         </BorderPane.margin></Label>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+         <content>
+            <ListChooser fx:id="tapahtumatLista" prefHeight="200.0" />
+         </content>
+      </ScrollPane>
+   </center>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</BorderPane>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxVapari.VapariGUIController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+                  <MenuItem fx:id="menuVaihdaKaupunkia" mnemonicParsing="false" onAction="#handleVaihdaKaupunkia" text="Vaihda kaupunkia" />
+                  <MenuItem fx:id="menuTulostusValinta" mnemonicParsing="false" onAction="#handleTulostusValinta" text="Tulosta" />
+              <MenuItem fx:id="menuSulje" mnemonicParsing="false" onAction="#handleSulje" text="Sulje" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Toiminnot">
+            <items>
+              <MenuItem fx:id="menuLisaaHenkilo" mnemonicParsing="false" onAction="#handleUusiHenkilo" text="Lisää uusi henkilö" />
+                  <MenuItem fx:id="menuMuokkaaHenkilo" mnemonicParsing="false" onAction="#handleMuokkaaHenkilo" text="Muokkaa henkilön tietoja" />
+                  <MenuItem fx:id="menuMuokkaaLisatiedot" mnemonicParsing="false" onAction="#handleMuokkaaLisatiedot" text="Muokkaa henkilön lisätietoja" />
+                  <MenuItem fx:id="menuMuokkaaToiminnot" mnemonicParsing="false" onAction="#handleMuokkaaToiminnot" text="Muokkaa henkilön toimintoja" />
+                  <MenuItem fx:id="menuTapahtumat" mnemonicParsing="false" onAction="#handleTapahtumat" text="Henkilön tapahtumat" />
+                  <MenuItem fx:id="menuPoistaHenkilo" mnemonicParsing="false" onAction="#handlePoistaHenkilo" text="Poista henkilö" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+              <MenuItem fx:id="menuOhjeet" mnemonicParsing="false" onAction="#handleOhjeet" text="Ohjeet" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+               <bottom>
+                  <TextField fx:id="hakuSanat" onKeyReleased="#handleHakuEhto" promptText="Haku" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets top="5.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </bottom>
+               <left>
+                  <Label text="Henkilöhaku" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <ComboBoxChooser fx:id="hakuValinta" prefWidth="100.0" rivit="" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </top>
+         <center>
+            <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+               <content>
+                  <ListChooser fx:id="chooserHenkilot" prefHeight="250.0" rivit="" />
+               </content>
+            </ScrollPane>
+         </center>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+         <bottom>
+            <HBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button fx:id="uusiHenkilo" mnemonicParsing="false" onAction="#handleUusiHenkilo" prefWidth="75.0" text="Lisää uusi" />
+                  <Button fx:id="poistaHenkilo" mnemonicParsing="false" onAction="#handlePoistaHenkilo" prefWidth="75.0" text="Poista" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </left>
+   <right>
+      <BorderPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <bottom>
+                  <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+                     <content>
+                        <ListChooser fx:id="henkiloToiminnot" prefHeight="125.0" rivit="" />
+                     </content>
+                  </ScrollPane>
+               </bottom>
+               <left>
+                  <Label text="Henkilön toiminnot" BorderPane.alignment="CENTER_LEFT">
+                     <BorderPane.margin>
+                        <Insets bottom="14.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <right>
+                  <Button fx:id="toiminnot" mnemonicParsing="false" onAction="#handleMuokkaaToiminnot" prefWidth="75.0" text="Muokkaa" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </top>
+         <bottom>
+            <BorderPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <left>
+                  <Label text="Henkilön lisätiedot" BorderPane.alignment="CENTER_LEFT">
+                     <BorderPane.margin>
+                        <Insets bottom="14.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <right>
+                  <Button fx:id="lisatiedot" mnemonicParsing="false" onAction="#handleMuokkaaLisatiedot" prefWidth="75.0" text="Muokkaa" BorderPane.alignment="CENTER" />
+               </right>
+               <bottom>
+                  <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <content>
+                        <ListChooser fx:id="henkiloLisatiedot" prefHeight="125.0" />
+                     </content>
+                  </ScrollPane>
+               </bottom>
+            </BorderPane>
+         </bottom>
+      </BorderPane>
+   </right>
+   <center>
+      <BorderPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </BorderPane.margin>
+         <top>
+            <Label text="Henkilön tiedot" BorderPane.alignment="CENTER_LEFT">
+               <BorderPane.margin>
+                  <Insets bottom="14.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane alignment="CENTER" hgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" percentWidth="0.0" />
+                      <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="nimi" GridPane.halignment="LEFT" />
+                        <Label text="hetu" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                        <Label text="puh" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                        <Label text="mail" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <Label text="osoite" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+                        <Label text="postinumero" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+                        <Label text="alue" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+                        <Label text="rooli" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+                        <TextField fx:id="tiedotNimi" GridPane.columnIndex="1" />
+                        <TextField fx:id="tiedotHetu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tiedotPuh" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="tiedotMail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="tiedotOsoite" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="tiedotPostinro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="tiedotAlue" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="tiedotRooli" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </ScrollPane>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="muokkaaHenkilo" mnemonicParsing="false" onAction="#handleMuokkaaHenkilo" prefWidth="75.0" text="Muokkaa" />
+                  <Button fx:id="tapahtumat" mnemonicParsing="false" onAction="#handleTapahtumat" prefWidth="150.0" text="Henkilön tapahtumat" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </center>
+</BorderPane>
